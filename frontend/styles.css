@@ -1,0 +1,292 @@
+:root {
+    --azul-oscuro: #0a192f;
+    --blanco: #ffffff;
+    --azul-claro: #1e3a6f;
+    --gris: #e6e9f0;
+    --rojo: #ff4444;
+    --verde: #00C851;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--gris);
+    color: var(--azul-oscuro);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header h2 {
+    font-size: 1.2em;
+    font-weight: normal;
+    opacity: 0.9;
+}
+
+/* Notificación institucional (modal obligatorio) */
+.notification-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 25, 47, 0.65);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.notification-box {
+    background: var(--blanco);
+    padding: 30px 35px;
+    border-radius: 12px;
+    max-width: 480px;
+    width: 92%;
+    text-align: center;
+    box-shadow: 0 15px 45px rgba(0,0,0,.35);
+    border-top: 6px solid var(--azul-oscuro);
+    animation: fadeInScale 0.3s ease;
+}
+@keyframes fadeInScale {
+    from {
+        transform: scale(.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.notification-box h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: var(--azul-oscuro);
+    font-weight: 700;
+}
+.notification-box p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+.btn-confirm {
+    margin-top: 18px;
+    background: var(--azul-oscuro);
+    color: var(--blanco);
+    border: none;
+    padding: 10px 26px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background-color .25s ease, transform .1s ease;
+}
+.btn-confirm:hover {
+    background: var(--azul-claro);
+}
+.btn-confirm:active {
+    transform: scale(0.97);
+}
+/* Calendario */
+.calendar-section {
+    background-color: var(--blanco);
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.calendar-section h3 {
+    color: var(--azul-oscuro);
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.calendar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn-calendar {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.btn-calendar:hover {
+    background-color: var(--azul-claro);
+}
+
+#currentMonthYear {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--azul-oscuro);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.calendar-day-header {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.calendar-day {
+    background-color: var(--gris);
+    padding: 15px 10px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.calendar-day:hover {
+    background-color: var(--azul-claro);
+    color: var(--blanco);
+}
+
+.calendar-day.birthday {
+    background-color: #ffd700;
+    color: var(--azul-oscuro);
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255,215,0,0.3);
+}
+
+.calendar-day.today {
+    border: 2px solid var(--azul-oscuro);
+}
+
+.birthday-count {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: var(--rojo);
+    color: var(--blanco);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tabla */
+.table-section {
+    background-color: var(--blanco);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.table-section h3 {
+    color: var(--azul-oscuro);
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.search-box {
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid var(--gris);
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--azul-oscuro);
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--gris);
+}
+
+tr:hover {
+    background-color: var(--gris);
+}
+
+tr.birthday-today {
+    background-color: #ffd700;
+    font-weight: bold;
+}
+
+tr.birthday-tomorrow {
+    background-color: #87CEEB;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .calendar-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+    
+    header h2 {
+        font-size: 1em;
+    }
+}

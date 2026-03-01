@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cumpleañeros del Mes - Marzo</title>
+
+  <style>
+    :root {
+      --azul-oscuro: #0a192f;
+      --blanco: #ffffff;
+      --gris: #e6e9f0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--gris);
+      margin: 0;
+      padding: 20px;
+      color: var(--azul-oscuro);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      background: var(--blanco);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    }
+
+    .header {
+      background: var(--azul-oscuro);
+      color: var(--blanco);
+      padding: 20px;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: 120px 1fr 120px;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .header img {
+      width: 90px;
+      margin: auto;
+    }
+
+    .header h1 {
+      text-align: center;
+      font-size: 1.8em;
+      margin: 0;
+    }
+
+    .header h2 {
+      text-align: center;
+      font-size: 1.2em;
+      font-weight: normal;
+      margin: 5px 0 0;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.6em;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background: var(--azul-oscuro);
+      color: var(--blanco);
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f5f7fb;
+    }
+
+    tbody tr:hover {
+      background: #dde6f5;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <img src="/frontend/img/logo_izquierdo.jpeg" alt="Icono Izquierdo">
+    <div>
+      <h1>BASE DE DESPLIEGUE OPERACIONAL</h1>
+      <h2>TIGRES - COE REGIÓN NORTE</h2>
+    </div>
+    <img src="/frontend/img/logo_derecho.jpeg" alt="Icono Derecho">
+  </div>
+
+  <div class="title">Cumpleañeros del Mes de Marzo</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>N°</th>
+        <th>Grado</th>
+        <th>Nombre</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody id="tablaMarzo"></tbody>
+  </table>
+
+</div>
+
+<script>
+  function parseLocalDate(dateString) {
+    const [y, m, d] = dateString.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  }
+
+  async function cargarMarzo() {
+    const res = await fetch("/frontend/data/funcionarios.json");
+    const data = await res.json();
+
+    const marzo = data.funcionarios.filter(f => {
+      const fecha = parseLocalDate(f.fecha_cumple);
+      return fecha.getMonth() === 2;
+    });
+
+    let html = "";
+    marzo.forEach((f, i) => {
+      html += `
+        <tr>
+          <td>${i + 1}</td>
+          <td>${f.rango}</td>
+          <td>${f.nombre}</td>
+          <td>${parseLocalDate(f.fecha_cumple).toLocaleDateString("es-HN")}</td>
+        </tr>
+      `;
+    });
+
+    document.getElementById("tablaMarzo").innerHTML = html;
+  }
+
+  cargarMarzo();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base Progreso - Control de Cumpleaños</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎂 Base Operacional Progreso</h1>
+            <h2>Sistema de Control de Cumpleaños - Funcionarios Policiales</h2>
+        </header>
+
+       <div id="notificationArea" class="notification-overlay" style="display:none;">
+            <div class="notification-box">
+                <h3>🔔 Notificación Institucional</h3>
+                <p id="notificationMessage"></p>
+                <button class="btn-confirm" onclick="closeNotification()">Leído y confirmado</button>
+            </div>
+        </div>
+
+        <main>
+            <section class="calendar-section">
+                <h3>📅 Calendario Mensual</h3>
+                <div class="calendar-controls">
+                    <button id="prevMonth" class="btn-calendar">← Mes Anterior</button>
+                    <span id="currentMonthYear"></span>
+                    <button id="nextMonth" class="btn-calendar">Mes Siguiente →</button>
+                </div>
+                <div id="calendar" class="calendar-grid"></div>
+            </section>
+
+            <section class="table-section">
+                <h3>📋 Lista de Funcionarios</h3>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Buscar funcionario...">
+                </div>
+                <div class="table-container">
+                    <table id="funcionariosTable">
+                        <thead>
+                            <tr>
+                                <th>Rango</th>
+                                <th>Nombre Completo</th>
+                                <th>Fecha de Cumpleaños</th>
+                                <th>Edad</th>
+                                <th>Próximo Cumple</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <!-- Datos cargados dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
