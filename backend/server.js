@@ -25,7 +25,7 @@ webpush.setVapidDetails(
   vapidKeys.privateKey,
 );
 
-const subsFile = path.join(__dirname, "subscribers.json");
+const subsFile = path.join(__dirname, "/subscribers.json");
 const dataFile = path.join(__dirname, "/data/funcionarios.json");
 
 // Guardar suscripción
