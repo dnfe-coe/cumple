@@ -10,7 +10,7 @@ app.use(express.json());
 const __dirname = path.resolve();
 
 // Servir archivos estáticos desde frontend
-app.use(express.static(path.join(__dirname, "../frontend")));
+app.use(express.static(path.join(__dirname)));
 
 // Claves VAPID (para notificaciones push)
 const vapidKeys = {
@@ -26,7 +26,7 @@ webpush.setVapidDetails(
 );
 
 const subsFile = path.join(__dirname, "subscribers.json");
-const dataFile = path.join(__dirname, "../frontend/data/funcionarios.json");
+const dataFile = path.join(__dirname, "/data/funcionarios.json");
 
 // Guardar suscripción
 app.post("/subscribe", (req, res) => {
