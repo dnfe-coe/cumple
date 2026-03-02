@@ -21,7 +21,7 @@ async function subscribePush() {
       "BMESwKatNB901QBa8PZnG_ZgLwQjA7VauYd0eC2AN6dsWi0aLHwhzeQhQSEQn4AotXjxFc3voGXTJJ8Lw_ypGJU",
   });
 
-  await fetch("/subscribe", {
+  await fetch("https://cumple-zoam.onrender.com/subscribe", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(sub),
