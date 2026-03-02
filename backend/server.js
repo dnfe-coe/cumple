@@ -11,6 +11,8 @@ const __dirname = path.resolve();
 
 // Servir archivos estáticos desde frontend
 app.use(express.static(path.join(__dirname, "..")));
+// Ruta principal: devolver index.html 
+app.get("/", (req, res) => { res.sendFile(path.join(__dirname, "..", "index.html")); });
 
 // Claves VAPID (para notificaciones push)
 const vapidKeys = {
